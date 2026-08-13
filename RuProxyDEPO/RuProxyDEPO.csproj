@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{C0FF20F9-EC6D-4B2B-8E10-264E0D7E6F51}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>RuProxyDEPO</RootNamespace>
+        <AssemblyName>RuProxyDEPO</AssemblyName>
+        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\BepInEx\core\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="BepInEx">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\BepInEx\core\BepInEx.dll</HintPath>
+        </Reference>
+        <Reference Include="com.rlabrecque.steamworks.net">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\com.rlabrecque.steamworks.net.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="SocketIOUnityAssembly">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\SocketIOUnityAssembly.dll</HintPath>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/>
+        <Reference Include="UnityEngine">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AccessibilityModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Advertisements">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Advertisements.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AIModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AndroidJNIModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AnimationModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ARModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AssetBundleModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AudioModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ClothModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ClusterInputModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ClusterRendererModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ContentLoadModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ContentLoadModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CrashReportingModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.DirectorModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.DSPGraphModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.GameCenterModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.GIModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.GIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.GridModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.HotReloadModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ImageConversionModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.InputLegacyModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.InputModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.JSONSerializeModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.LocalizationModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.NVIDIAModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.NVIDIAModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ParticleSystemModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PerformanceReportingModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Physics2DModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ProfilerModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PropertiesModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.PropertiesModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.AppleCore">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.AppleCore.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.AppleMacosStub">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.AppleMacosStub.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.AppleStub">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.AppleStub.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.Codeless">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.Codeless.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.SecurityCore">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.SecurityStub">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.Stores">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.Stores.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.WinRTCore">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.WinRTCore.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.Purchasing.WinRTStub">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.Purchasing.WinRTStub.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ScreenCaptureModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SharedInternalsModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SpatialTracking">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.SpatialTracking.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SpriteMaskModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SpriteShapeModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.StreamingModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SubstanceModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.SubsystemsModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TerrainModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TerrainPhysicsModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TextCoreFontEngineModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TextCoreTextEngineModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TextRenderingModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TilemapModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TLSModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UIElementsModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UmbraModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityAnalyticsModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityConnectModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityCurlModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityCurlModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityTestProtocolModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VehiclesModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VFXModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VideoModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VirtualTexturingModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.VirtualTexturingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VRModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.WindModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.XRModule">
+            <HintPath>..\..\..\..\..\mnt\data\SteamLibrary\steamapps\common\DEPO\DEPO_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="RuProxyDEPO.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
