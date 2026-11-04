@@ -8,7 +8,7 @@ using HarmonyLib;
 
 namespace RuProxyDEPO
 {
-    [BepInPlugin("ru.makorddev.ruproxydepo", "RuProxyDEPO", "1.0.0")]
+    [BepInPlugin("ru.makorddev.ruproxydepo", "RuProxyDEPO", "1.1.0")]
     public class RuProxyDEPO : BaseUnityPlugin
     {
         public static ConfigEntry<string> ServerUrl;
