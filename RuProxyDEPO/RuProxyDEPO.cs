@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using BepInEx;
@@ -8,7 +9,7 @@ using HarmonyLib;
 
 namespace RuProxyDEPO
 {
-    [BepInPlugin("ru.makorddev.ruproxydepo", "RuProxyDEPO", "1.1.0")]
+    [BepInPlugin("ru.makorddev.ruproxydepo", "RuProxyDEPO", "1.2.0")]
     public class RuProxyDEPO : BaseUnityPlugin
     {
         public static ConfigEntry<string> ServerUrl;
@@ -16,17 +17,17 @@ namespace RuProxyDEPO
         private void Awake()
         {
             ServerUrl = Config.Bind(
-                "Network", 
-                "ServerUrl", 
-                "https://depo.makordikr.ru", 
+                "Network",
+                "ServerUrl",
+                "https://depo.makordikr.ru",
                 "URL of proxy server."
             );
-            
+
             Harmony harmony = new Harmony("ru.makorddev.ruproxydepo");
             harmony.PatchAll();
 
             PatchAllOnlineTargets(harmony);
-            
+
             Logger.LogInfo("RuProxyDEPO loaded.");
         }
 
@@ -37,8 +38,7 @@ namespace RuProxyDEPO
 
             (string parentTypeName, string nestedTypeName, string methodName)[] targets = new[]
             {
-                ("WSManager", (string)null, "Conectar"),
-                ("WSManagerMenus", (string)null, "Conectar"),
+                ("WSManager", (string)null, "CrearSocket"),
                 ("ManagerRankingCoronas", "<ObtenerCoronas>d__13", "MoveNext"),
                 ("ManagerRankingCoronas", "<ObtenerRankingsOnline>d__14", "MoveNext"),
                 ("ManagerEggHunt", "<ObtenerHuevos>d__147", "MoveNext"),
@@ -57,8 +57,8 @@ namespace RuProxyDEPO
             {
                 try
                 {
-                    Type targetType = target.nestedTypeName == null 
-                        ? gameAssembly.GetType(target.parentTypeName) 
+                    Type targetType = target.nestedTypeName == null
+                        ? gameAssembly.GetType(target.parentTypeName)
                         : gameAssembly.GetType(target.parentTypeName + "+" + target.nestedTypeName);
 
                     if (targetType == null)
@@ -81,6 +81,46 @@ namespace RuProxyDEPO
                 {
                     Logger.LogError($"Error patching {target.parentTypeName}: {ex.Message}");
                 }
+            }
+
+            PatchAsyncByMethodName(harmony, transpilerHarmonyMethod, gameAssembly, "WSManagerMenus", "ConectarConSesion");
+            PatchAsyncByMethodName(harmony, transpilerHarmonyMethod, gameAssembly, "ServidorSesion", "IniciarSesion");
+        }
+
+        private void PatchAsyncByMethodName(Harmony harmony, HarmonyMethod transpiler, Assembly asm, string typeName, string methodName)
+        {
+            try
+            {
+                Type parent = asm.GetType(typeName);
+                if (parent == null)
+                {
+                    Logger.LogWarning($"Parent type not found: {typeName}");
+                    return;
+                }
+
+                string pattern = $"<{methodName}>d__";
+                Type stateMachine = parent.GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Public)
+                                         .FirstOrDefault(t => t.Name.StartsWith(pattern));
+
+                if (stateMachine == null)
+                {
+                    Logger.LogWarning($"State machine not found for {typeName}.{methodName}");
+                    return;
+                }
+
+                MethodInfo moveNext = AccessTools.Method(stateMachine, "MoveNext");
+                if (moveNext == null)
+                {
+                    Logger.LogWarning($"MoveNext not found in {stateMachine.FullName}");
+                    return;
+                }
+
+                harmony.Patch(moveNext, transpiler: transpiler);
+                Logger.LogInfo($"Patched {stateMachine.FullName}.MoveNext");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error patching {typeName}.{methodName}: {ex.Message}");
             }
         }
     }
